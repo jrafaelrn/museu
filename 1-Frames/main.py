@@ -1,5 +1,5 @@
 from google_keys import *
-import google_drive, google_sheets, frames
+import google_drive, google_sheets, frames, os, platform
 
 
 
@@ -29,7 +29,12 @@ def main():
 def clear_env():
 
     print("Clearing environment...")
-    path_folder = "./temp"
+
+    if platform.system() == 'Linux':
+        path_folder = "./temp"
+    else:
+        path_folder = f'{os.path.dirname(os.path.abspath(__file__))}\\temp'
+        
 
     for file in os.listdir(path_folder):
         try:
