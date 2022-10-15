@@ -1,5 +1,5 @@
 from google_keys import *
-import google_drive, google_sheets, frames, os, platform
+import google_drive, google_sheets, frames, os, platform, time
 
 
 
@@ -21,7 +21,12 @@ def main():
         return 
     
     frames.set_folder()
-    frames.extract_frames(name_file)
+    start_time,stop_time, total_frames, fps_video = frames.extract_frames(name_file)
+
+    # Print time human readable
+    print(f"Start time: {time.strftime('%H:%M:%S', time.gmtime(start_time))}")
+    print(f"Stop time: {time.strftime('%H:%M:%S', time.gmtime(stop_time))}")
+    print(f"Total time: {time.strftime('%H:%M:%S', time.gmtime(stop_time - start_time))}")
 
     # Save frames to Google Drive
 
