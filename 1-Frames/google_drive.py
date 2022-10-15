@@ -3,7 +3,7 @@ from googleapiclient.discovery import build
 from googleapiclient.http import MediaIoBaseDownload
 from googleapiclient.errors import HttpError
 from oauth2client.service_account import ServiceAccountCredentials
-import io, json
+import io, json, platform, os
 
 
 GOOGLE_DRIVE_API_KEY = None
@@ -64,7 +64,8 @@ def get_file(file_id, name_file):
                 print(F'Download {int(status.progress() * 100)}%')
 
             file.seek(0)
-            with open(f'./temp/{name_file}', 'wb') as f:
+            destination_path = get_destination_path()
+            with open(f'{destination_path}{name_file}', 'wb') as f:
                 shutil.copyfileobj(file, f)
             
             print(f"Download {name_file} complete")
@@ -96,3 +97,12 @@ def get_file_path(gdrive, file_id):
     print(f'Path: {path_result}')
     return path_result
 
+
+
+
+def get_destination_path():
+    
+    if platform.system() == 'Linux':
+        return "./temp/"
+    
+    return f'{os.path.dirname(os.path.abspath(__file__))}\\temp\\'

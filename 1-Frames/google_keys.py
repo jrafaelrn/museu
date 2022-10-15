@@ -1,5 +1,5 @@
 from google.cloud import secretmanager
-import os
+import os, platform
 
 
 #####################################
@@ -7,7 +7,11 @@ import os
 #####################################
 
 def set_credentials_env():
-    os.environ["GOOGLE_APPLICATION_CREDENTIALS"] = "./credentials.json"
+
+    if platform.system() == 'Linux':
+        os.environ["GOOGLE_APPLICATION_CREDENTIALS"] = "./credentials.json"
+    else:
+        os.environ["GOOGLE_APPLICATION_CREDENTIALS"] = f'{os.path.dirname(os.path.abspath(__file__))}\\credentials.json'
 
 
 
