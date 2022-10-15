@@ -36,13 +36,12 @@ def download_file():
                 if path_file.find('input') == -1:
                     continue
                 
-                video_file = get_file(id_file, name_file)                
-
-            return True, name_file
+                video_file = get_file(id_file, name_file) 
+                return name_file
             
         except Exception as error:
             print(F'An error occurred: {error}')
-            return False, None
+            return None
 
 
 
