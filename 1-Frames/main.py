@@ -12,13 +12,16 @@ def main():
     
     # Download file from Google Drive
     google_drive.set_credentials(API_KEY)
-    result, name_file = google_drive.download_file()
+    name_file = google_drive.download_file()
 
 
     # Split file into frames
-    if result:
-        frames.set_folder()
-        frames.extract_frames(name_file)
+    if name_file is None:
+        print("No files found")
+        return 
+    
+    frames.set_folder()
+    frames.extract_frames(name_file)
 
     # Save frames to Google Drive
 

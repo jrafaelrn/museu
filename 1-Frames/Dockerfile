@@ -5,9 +5,9 @@ WORKDIR /app
 COPY . /app
 RUN pip install -r requirements.txt
 
-RUN apt-get -y update
-RUN apt-get -y upgrade
-RUN apt-get install -y imagemagick ffmpeg
+RUN apt -y update
+RUN apt -y upgrade
+RUN apt install -y imagemagick ffmpeg
 
 RUN sed -i '/<policy domain="path" rights="none" pattern="@\*"/d' /etc/ImageMagick-6/policy.xml
 
