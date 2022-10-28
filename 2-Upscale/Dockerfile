@@ -1,0 +1,1 @@
+FROM ghcr.io/k4yt3x/video2x:5.0.0-beta6
