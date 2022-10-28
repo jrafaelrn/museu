@@ -12,6 +12,7 @@ def set_folder():
 
     else:
         os.makedirs('./temp/frames')
+        set_folder()
 
 
 

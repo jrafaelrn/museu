@@ -1,0 +1,10 @@
+version: "3.9"
+
+services:
+
+  museu_upscale:
+    build: .
+    volumes: 
+      - ./temp:/app/temp
+    stdin_open: true
+    tty: true

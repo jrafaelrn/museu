@@ -1,0 +1,12 @@
+version: "3.9"
+
+services:
+
+  museu_upscale:
+    build: .
+    volumes: 
+      - ./:/host
+    stdin_open: true
+    tty: true
+
+    command: -p singleprocess -ws ./workspace/ -i /host/0.png -o /host/0-HD.png
