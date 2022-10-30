@@ -18,6 +18,9 @@ RUN cmake -DOPENCV_EXTRA_MODULES_PATH=../opencv_contrib-4.x/modules ../opencv-4.
 # Build
 RUN cmake --build .
 
+# Install Python
+RUN apt install -y python3 python3-pip
+
 COPY . ./app
 WORKDIR /app
 ENTRYPOINT [ "python3", "main.py" ]
