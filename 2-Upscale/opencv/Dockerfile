@@ -24,6 +24,9 @@ RUN make install
 RUN apt install -y python3 python3-pip
 RUN pip3 install opencv-python
 
+RUN apt-get update
+RUN apt-get install ffmpeg libsm6 libxext6  -y
+
 
 COPY . ./app
 WORKDIR /app
