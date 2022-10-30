@@ -22,6 +22,8 @@ RUN make install
 
 # Install Python
 RUN apt install -y python3 python3-pip
+RUN pip3 install opencv-python
+
 
 COPY . ./app
 WORKDIR /app
